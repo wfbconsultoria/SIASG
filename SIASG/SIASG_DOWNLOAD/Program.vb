@@ -13,7 +13,8 @@ Module Program
         cnnStr = ""
         Dim arquivo As String = "/home/bih_datasus/SIASG/SIASG/SIASG_CONFIG.txt"
         Dim fluxoTexto As IO.StreamReader
-
+        Console.WriteLine(arquivo)
+        Console.WriteLine("ARQUIVO COMPILADO NOVAMENTE")
         If IO.File.Exists(arquivo) Then
             fluxoTexto = New IO.StreamReader(arquivo)
             cnnStr = fluxoTexto.ReadLine
