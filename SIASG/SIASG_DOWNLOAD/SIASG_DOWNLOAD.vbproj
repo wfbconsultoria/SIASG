@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>SIASG_DOWNLOAD</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
+    <StartupObject>SIASG_DOWNLOAD.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
