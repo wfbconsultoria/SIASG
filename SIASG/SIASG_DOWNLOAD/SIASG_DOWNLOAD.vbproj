@@ -8,8 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="IMPORTAR\" />
-    <Folder Include="IMPORTADOS\" />
+    <Compile Remove="Install\**" />
+    <EmbeddedResource Remove="Install\**" />
+    <None Remove="Install\**" />
   </ItemGroup>
 
   <ItemGroup>
