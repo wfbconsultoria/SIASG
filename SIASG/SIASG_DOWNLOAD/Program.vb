@@ -11,7 +11,7 @@ Module Program
     Function cnnStr() As String
         'Lê arquivo de configuração para recuperar a string de conexão
         cnnStr = ""
-        Dim arquivo As String = "\\MIRO\home\bih_datasus\SIASG\SIASG_CONFIG.txt"
+        Dim arquivo As String = "/home/bih_datasus/SIASG/SIASG/SIASG_CONFIG.txt"
         Dim fluxoTexto As IO.StreamReader
 
         If IO.File.Exists(arquivo) Then
