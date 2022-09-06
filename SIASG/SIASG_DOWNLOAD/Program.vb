@@ -20,6 +20,7 @@ Module Program
             fluxoTexto.Close()
         Else
             Console.WriteLine("Arquivo de configuração ausente")
+            Console.WriteLine("ARQUIVO COMPILADO NOVAMENTE")
         End If
 
     End Function
