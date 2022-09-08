@@ -1,9 +1,21 @@
+Imports System.Reflection.Emit
+
 Module Program
     Public cnn As New Npgsql.NpgsqlConnection
+    Public schema As String = "SIASG"
+    Public tabela As String = "TB_LOG"
+    Public processo As String = "IMPORT"
+    Public strSql As String = ""
     Sub Main()
         Console.Title = "IMPORT"
         Console.BackgroundColor = ConsoleColor.Blue
         ConectaBanco()
+
+        Do
+            strSql = "INSERT INTO [" & schema & "]." & "[" & tabela & "] ([PROCESSO]) Values ('" & processo & "')"
+            Console.WriteLine(processo & " - " & Now() & "OK")
+        Loop
+
     End Sub
 
     Function CnnStr() As String
@@ -27,7 +39,6 @@ Module Program
             cnn = New Npgsql.NpgsqlConnection(CnnStr)
             cnn.Open()
             ConectaBanco = True
-            Console.WriteLine("OK")
 
         Catch e As Exception
             'LogErro(e)
@@ -39,4 +50,30 @@ Module Program
 
     End Function
 
+    Public Function ExecuteSQL(SQL As String) As Boolean
+        SQL = ConverteSQL_PSQL(SQL)
+        Try
+            ExecuteSQL = False
+            Dim cmd As Npgsql.NpgsqlCommand = cnn.CreateCommand
+            cmd.CommandText = SQL
+            cmd.ExecuteNonQuery()
+            ExecuteSQL = True
+        Catch e As Exception
+            ExecuteSQL = False
+            'LogErro(e, SQL)
+        Finally
+
+        End Try
+
+    End Function
+
+    Function ConverteSQL_PSQL(SQL As String) As String
+        Try
+            SQL = Replace(SQL, "[", Chr(34))
+            SQL = Replace(SQL, "]", Chr(34))
+        Catch
+            SQL = ""
+        End Try
+        ConverteSQL_PSQL = SQL
+    End Function
 End Module
