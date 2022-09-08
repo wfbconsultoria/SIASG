@@ -28,12 +28,12 @@ Module Program
             cnn.Open()
             ConectaBanco = True
             Console.WriteLine("OK")
-            Console.Read()
+
         Catch e As Exception
             'LogErro(e)
             ConectaBanco = False
             Console.WriteLine(e.ToString)
-            Console.Read()
+
         Finally
         End Try
 
