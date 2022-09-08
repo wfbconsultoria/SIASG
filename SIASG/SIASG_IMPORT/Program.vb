@@ -1,9 +1,8 @@
-
 Module Program
     Public cnn As New Npgsql.NpgsqlConnection
     Sub Main()
-        Console.Title = "DOWNLOAD"
-        Console.BackgroundColor = ConsoleColor.Green
+        Console.Title = "IMPORT"
+        Console.BackgroundColor = ConsoleColor.Blue
         ConectaBanco()
     End Sub
 
