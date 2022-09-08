@@ -12,8 +12,8 @@ Module Program
         ConectaBanco()
 
         Do
-            strSql = "INSERT INTO [" & schema & "]." & "[" & tabela & "] ([PROCESSO]) Values ('" & processo & "')"
-            Console.WriteLine(processo & " - " & Now() & "OK")
+            ExecuteSQL(strSql)
+            Console.WriteLine(processo & " - " & Now() & " - OK")
         Loop
 
     End Sub

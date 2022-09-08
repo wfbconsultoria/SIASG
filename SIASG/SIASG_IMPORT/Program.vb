@@ -13,7 +13,8 @@ Module Program
 
         Do
             strSql = "INSERT INTO [" & schema & "]." & "[" & tabela & "] ([PROCESSO]) Values ('" & processo & "')"
-            Console.WriteLine(processo & " - " & Now() & "OK")
+            ExecuteSQL(strSql)
+            Console.WriteLine(processo & " - " & Now() & " - OK")
         Loop
 
     End Sub
@@ -22,8 +23,8 @@ Module Program
         CnnStr = ""
         Try
             'Lê arquivo de configuração para recuperar a string de conexão
-            'Dim cnnConfig As String = "D:\GitHub_SIASG\SIASG\SIASG_CONFIG.txt"
-            Dim cnnConfig As String = "/home/bih_datasus/SIASG/SIASG_CONFIG.txt"
+            Dim cnnConfig As String = "D:\GitHub_SIASG\SIASG\SIASG_CONFIG.txt"
+            'Dim cnnConfig As String = "/home/bih_datasus/SIASG/SIASG_CONFIG.txt"
             Dim fi As New IO.StreamReader(cnnConfig)
             CnnStr = fi.ReadLine
             fi.Close()
