@@ -1,28 +1,39 @@
-Imports System
-Imports System.IO
-
 
 Module Program
+    Public cnn As New Npgsql.NpgsqlConnection
     Sub Main()
-        Console.WriteLine(cnnStr())
-        Console.Read()
+        ConectaBanco()
     End Sub
 
-    Function cnnStr() As String
-        'Lê arquivo de configuração para recuperar a string de conexão
-        cnnStr = ""
-        Dim arquivo As String = "/home/bih_datasus/SIASG/SIASG/SIASG_CONFIG.txt"
-        Dim fluxoTexto As IO.StreamReader
-        Console.WriteLine(arquivo)
-        Console.WriteLine("ARQUIVO COMPILADO NOVAMENTE")
-        If IO.File.Exists(arquivo) Then
-            fluxoTexto = New IO.StreamReader(arquivo)
-            cnnStr = fluxoTexto.ReadLine
-            fluxoTexto.Close()
-        Else
-            Console.WriteLine("Arquivo de configuração ausente")
-            Console.WriteLine("ARQUIVO COMPILADO NOVAMENTE")
-        End If
+    Function CnnStr() As String
+        CnnStr = ""
+        Try
+            'Lê arquivo de configuração para recuperar a string de conexão
+            Dim cnnConfig As String = "./SIASG/SIASG/SIASG_CONFIG.txt"
+            Dim fi As New IO.StreamReader(cnnConfig)
+            CnnStr = fi.ReadLine
+            fi.Close()
+        Catch e As Exception
+            Console.WriteLine(e.ToString)
+        Finally
+        End Try
+    End Function
+
+    Function ConectaBanco() As Boolean
+        Try
+            'Conexão Postgres
+            cnn = New Npgsql.NpgsqlConnection(CnnStr)
+            cnn.Open()
+            ConectaBanco = True
+            Console.WriteLine("OK")
+            Console.Read()
+        Catch e As Exception
+            'LogErro(e)
+            ConectaBanco = False
+            Console.WriteLine(e.ToString)
+            Console.Read()
+        Finally
+        End Try
 
     End Function
 
