@@ -13,7 +13,8 @@ Module Program
 
         Do
             strSql = "INSERT INTO [" & schema & "]." & "[" & tabela & "] ([PROCESSO]) Values ('" & processo & "')"
-            ExecuteSQL(strSql)
+
+            ExecuteSQL(strSql) Then
             Console.WriteLine(processo & " - " & Now() & " - OK")
         Loop
 
