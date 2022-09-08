@@ -9,7 +9,7 @@ Module Program
         CnnStr = ""
         Try
             'Lê arquivo de configuração para recuperar a string de conexão
-            Dim cnnConfig As String = "./SIASG/SIASG/SIASG_CONFIG.txt"
+            Dim cnnConfig As String = "~/SIASG/SIASG/SIASG_CONFIG.txt"
             Dim fi As New IO.StreamReader(cnnConfig)
             CnnStr = fi.ReadLine
             fi.Close()
