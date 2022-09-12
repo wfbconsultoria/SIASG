@@ -7,7 +7,6 @@ Module Program
     Public processo As String = "DOWNLOAD"
     Public strSql As String = ""
 
-
     Sub Main()
         Console.Title = processo
         Console.BackgroundColor = ConsoleColor.Green
