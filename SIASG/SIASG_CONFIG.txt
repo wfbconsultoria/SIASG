@@ -1,1 +1,0 @@
-Server=paris.datasus.net.br;Port=5432;UserId=bih_datasus;Password=Mepm2412;Database=bih_datasus
